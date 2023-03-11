@@ -56,7 +56,48 @@ public class RelojPalabras {
 	}
 	
 	private static char[][] minutosPalabras(char[][] relojPalabras, int minutos) {
-		// TODO Auto-generated method stub
+		if (minutos > 57 || minutos < 4) {
+			relojPalabras = enPunto(relojPalabras);
+		}
+		if (minutos > 3 && minutos < 33) {
+			relojPalabras = y(relojPalabras);
+			if (minutos > 3 && minutos < 8) {
+				relojPalabras = cincoMinutos(relojPalabras);
+			}
+			if (minutos > 7 && minutos < 13) {
+				relojPalabras = diezMinutos(relojPalabras);
+			}
+			if (minutos > 12 && minutos < 18) {
+				relojPalabras = cuarto(relojPalabras);
+			}
+			if (minutos > 17 && minutos < 23) {
+				relojPalabras = veinte(relojPalabras);
+			}
+			if (minutos > 22 && minutos < 28) {
+				relojPalabras = veinticinco(relojPalabras);
+			}
+			if (minutos > 27 && minutos < 33) {
+				relojPalabras = media(relojPalabras);
+			}
+		}
+		if (minutos > 32 && minutos < 58) {
+			relojPalabras = menos(relojPalabras);
+			if (minutos > 32 && minutos < 38) {
+				relojPalabras = veinticinco(relojPalabras);
+			}
+			if (minutos > 37 && minutos < 43) {
+				relojPalabras = veinte(relojPalabras);
+			}
+			if (minutos > 42 && minutos < 48) {
+				relojPalabras = cuarto(relojPalabras);
+			}
+			if (minutos > 47 && minutos < 53) {
+				relojPalabras = diezMinutos(relojPalabras);
+			}
+			if (minutos > 52 && minutos < 58) {
+				relojPalabras = cincoMinutos(relojPalabras);
+			}
+		}
 		return relojPalabras;
 	}
 
@@ -153,21 +194,21 @@ public class RelojPalabras {
 	
 	private static char[][] veinticinco(char[][] relojPalabras) {
 		for (int i = 0; i < 11; i++) {
-			relojPalabras[9][i] = Character.toUpperCase(relojPalabras[9][i]);
+			relojPalabras[8][i] = Character.toUpperCase(relojPalabras[8][i]);
 		}
 		return relojPalabras;
 	}
 	
 	private static char[][] veinte(char[][] relojPalabras) {
-		for (int i = 1; i < 6; i++) {
-			relojPalabras[8][i] = Character.toUpperCase(relojPalabras[8][i]);
+		for (int i = 1; i < 7; i++) {
+			relojPalabras[7][i] = Character.toUpperCase(relojPalabras[7][i]);
 		}
 		return relojPalabras;
 	}
 	
 	private static char[][] cuarto(char[][] relojPalabras) {
 		for (int i = 5; i < 11; i++) {
-			relojPalabras[10][i] = Character.toUpperCase(relojPalabras[10][i]);
+			relojPalabras[9][i] = Character.toUpperCase(relojPalabras[9][i]);
 		}
 		return relojPalabras;
 	}
