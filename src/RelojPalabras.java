@@ -19,8 +19,7 @@ public class RelojPalabras {
 		};
 		
 		System.out.println(LocalTime.now().toString());
-		int hora = LocalTime.now().getHour();
-		int minutos = LocalTime.now().getMinute(); 
+		int hora = LocalTime.now().getHour(), minutos = LocalTime.now().getMinute();
 		
 		relojPalabras = tiempoPalabras(relojPalabras, hora, minutos);
 		imprimirReloj(relojPalabras);
@@ -30,12 +29,17 @@ public class RelojPalabras {
 	private static char[][] tiempoPalabras(char[][] relojPalabras, int hora, int minutos) {
 		relojPalabras = minutosPalabras(relojPalabras, minutos);
 		relojPalabras = (hora < 11) ? am(relojPalabras) : pm(relojPalabras);
+		relojPalabras[0][7] = (hora > 1) ? Character.toUpperCase(relojPalabras[0][7]) : Character.toLowerCase(relojPalabras[0][7]);
+		if (minutos > 32) {
+			hora++;
+		}
 		if (hora == 0) {
 			hora += 12;
 		}
 		if (hora > 12) {
 			hora -= 12;
 		}
+		
 		switch (hora) {
 		case 1 -> relojPalabras = una(relojPalabras);
 		case 2 -> relojPalabras = dos(relojPalabras);
@@ -144,7 +148,7 @@ public class RelojPalabras {
 	}
 	
 	private static char[][] siete(char[][] relojPalabras) {
-		for (int i = 5; i < 11; i++) {
+		for (int i = 5; i < 10; i++) {
 			relojPalabras[3][i] = Character.toUpperCase(relojPalabras[3][i]);
 		}
 		return relojPalabras;
@@ -186,7 +190,7 @@ public class RelojPalabras {
 	}
 	
 	private static char[][] media(char[][] relojPalabras) {
-		for (int i = 6; i < 11; i++) {
+		for (int i = 0; i < 5; i++) {
 			relojPalabras[9][i] = Character.toUpperCase(relojPalabras[9][i]);
 		}
 		return relojPalabras;
